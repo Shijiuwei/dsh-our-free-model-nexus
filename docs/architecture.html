@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dsh-our-free-model-nexus Architecture Overview — dsh-our-free-model-nexus</title>
+<meta property="og:title" content="dsh-our-free-model-nexus Architecture Overview — dsh-our-free-model-nexus">
+<meta property="og:description" content="dsh-our-free-model-nexus Architecture Overview">
+<meta property="og:type" content="website">
+<meta name="description" content="dsh-our-free-model-nexus Architecture Overview">
+<meta name="robots" content="index, follow, max-snippet:-1">
+<link rel="canonical" href="https://Shijiuwei.github.io/dsh-our-free-model-nexus/docs/architecture.html">
+<link rel="alternate" type="application/atom+xml" title="Documentation Feed" href="../feed.xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","author":{"@type":"Organization","name":"dsh-our-free-model-nexus"},"description":"dsh-our-free-model-nexus Architecture Overview","headline":"dsh-our-free-model-nexus Architecture Overview — dsh-our-free-model-nexus","inLanguage":"en","keywords":"","name":"dsh-our-free-model-nexus Architecture Overview — dsh-our-free-model-nexus","url":"https://Shijiuwei.github.io/dsh-our-free-model-nexus/docs/architecture.html"}</script>
+<style>
+:root{--nav-5a6-bg:#ffffff;--nav-5a6-sf:#f4f6f9;--nav-5a6-ink:#0f172a;--nav-5a6-mut:#52525b;--nav-5a6-acc:#0d9488;--nav-5a6-bd:rgba(15,23,42,0.10);--nav-5a6-r:9px;--nav-5a6-rsm:5px;--nav-5a6-mw:1140px;}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{margin:0;padding:0;background:var(--nav-5a6-bg);color:var(--nav-5a6-ink);font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, 'Noto Sans SC', sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased;}
+a{color:var(--nav-5a6-acc);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.nav-5a6-wrap{max-width:var(--nav-5a6-mw);margin:0 auto;padding:0 24px;}
+.nav-5a6-brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--nav-5a6-ink);letter-spacing:-0.015em;text-decoration:none;}
+.nav-5a6-brand:hover{text-decoration:none;color:var(--nav-5a6-acc);}
+.nav-5a6-mark{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;font-size:12px;font-weight:800;background:var(--nav-5a6-acc);color:#fff;border-radius:8px;flex-shrink:0;letter-spacing:0.04em;}
+.nav-5a6-navlinks{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:0.88rem;font-weight:500;}
+.nav-5a6-navlinks a{color:var(--nav-5a6-mut);text-decoration:none;}
+.nav-5a6-navlinks a:hover,.nav-5a6-navlinks a.nav-5a6-active{color:var(--nav-5a6-acc);font-weight:600;}
+.nav-5a6-card{background:var(--nav-5a6-sf);border:1px solid var(--nav-5a6-bd);border-radius:var(--nav-5a6-r);padding:20px;}
+.nav-5a6-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid var(--nav-5a6-bd);color:var(--nav-5a6-acc);background:transparent;}
+.nav-5a6-prose h1{font-size:clamp(1.65rem,2.6vw,2.25rem);line-height:1.25;margin:0 0 16px;letter-spacing:-0.02em;color:var(--nav-5a6-ink);}
+.nav-5a6-prose h2{font-size:1.3rem;margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--nav-5a6-bd);color:var(--nav-5a6-ink);}
+.nav-5a6-prose h3{font-size:1.05rem;margin:20px 0 8px;color:var(--nav-5a6-ink);}
+.nav-5a6-prose p{margin:0 0 14px;}
+.nav-5a6-prose ul,.nav-5a6-prose ol{margin:0 0 16px;padding-left:22px;}
+.nav-5a6-prose li{margin:5px 0;}
+.nav-5a6-prose code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.86em;background:rgba(15,23,42,0.06);padding:2px 6px;border-radius:4px;}
+.nav-5a6-prose pre{background:#0f172a;color:#e2e8f0;padding:16px 18px;border-radius:var(--nav-5a6-rsm);overflow-x:auto;font-size:0.84rem;line-height:1.58;border:1px solid var(--nav-5a6-bd);}
+.nav-5a6-prose pre code{background:transparent;padding:0;color:inherit;}
+.nav-5a6-prose table{width:100%;border-collapse:collapse;margin:18px 0;font-size:0.88rem;}
+.nav-5a6-prose th,.nav-5a6-prose td{border:1px solid var(--nav-5a6-bd);padding:9px 12px;text-align:left;}
+.nav-5a6-prose th{background:var(--nav-5a6-sf);font-weight:600;}
+.nav-5a6-prose blockquote{margin:16px 0;padding:10px 16px;border-left:3px solid var(--nav-5a6-acc);background:var(--nav-5a6-sf);color:var(--nav-5a6-mut);border-radius:0 var(--nav-5a6-rsm) var(--nav-5a6-rsm) 0;}
+.nav-5a6-refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:16px;}
+.nav-5a6-refcard{display:block;padding:12px 14px;border:1px solid var(--nav-5a6-bd);border-radius:var(--nav-5a6-rsm);background:var(--nav-5a6-bg);color:var(--nav-5a6-ink);transition:border-color 0.15s ease,transform 0.15s ease;}
+.nav-5a6-refcard:hover{border-color:var(--nav-5a6-acc);text-decoration:none;transform:translateY(-1px);}
+.nav-5a6-reflabel{display:block;font-weight:600;font-size:0.88rem;margin-bottom:3px;}
+.nav-5a6-refurl{display:block;font-family:ui-monospace,monospace;font-size:11px;color:var(--nav-5a6-mut);word-break:break-all;}
+.nav-5a6-ftr{margin-top:44px;padding:24px 0 36px;border-top:1px solid var(--nav-5a6-bd);font-size:0.82rem;color:var(--nav-5a6-mut);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;}
+.nav-5a6-hero{background:#f4f6f9;color:#0f172a;border:1px solid var(--nav-5a6-bd);border-radius:var(--nav-5a6-r);padding:28px 30px;margin-bottom:24px;}
+.nav-5a6-hero h1{color:#0f172a;margin:8px 0 10px;font-size:clamp(1.75rem,3vw,2.4rem);line-height:1.2;}
+.nav-5a6-hero p{color:#52525b;margin:0 0 18px;max-width:740px;font-size:0.98rem;}
+.nav-5a6-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--nav-5a6-rsm);background:var(--nav-5a6-acc);color:#fff;font-size:0.85rem;font-weight:600;border:none;}
+.nav-5a6-btn:hover{opacity:0.92;text-decoration:none;}
+.nav-5a6-btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--nav-5a6-rsm);background:transparent;color:inherit;border:1px solid var(--nav-5a6-bd);font-size:0.85rem;font-weight:600;}
+.nav-5a6-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0;}
+.nav-5a6-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0;}
+.nav-5a6-hdr{position:sticky;top:0;z-index:20;background:var(--nav-5a6-bg);border-bottom:1px solid var(--nav-5a6-bd);}
+.nav-5a6-hdr-in{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px;}
+.nav-5a6-api-grid{display:grid;grid-template-columns:220px minmax(0,1fr) 310px;gap:24px;padding-top:24px;align-items:start;}
+.nav-5a6-api-side{position:sticky;top:74px;font-size:0.84rem;display:flex;flex-direction:column;gap:5px;}
+.nav-5a6-api-side a{padding:6px 10px;border-radius:6px;color:var(--nav-5a6-mut);}
+.nav-5a6-api-side a:hover,.nav-5a6-api-side a.nav-5a6-active{background:var(--nav-5a6-sf);color:var(--nav-5a6-acc);font-weight:600;text-decoration:none;}
+.nav-5a6-api-pane{position:sticky;top:74px;background:#0f172a;color:#e2e8f0;border-radius:var(--nav-5a6-r);padding:16px;font-size:12px;border:1px solid rgba(255,255,255,0.08);}
+.nav-5a6-method{display:inline-block;padding:1px 6px;border-radius:4px;background:rgba(13,148,136,0.22);color:#5eead4;font-family:ui-monospace,monospace;font-size:10px;font-weight:700;margin-right:6px;}
+@media(max-width:1080px){.nav-5a6-api-grid{grid-template-columns:200px minmax(0,1fr);}.nav-5a6-api-pane{position:static;grid-column:1 / -1;}}
+@media(max-width:768px){.nav-5a6-api-grid,.nav-5a6-grid3,.nav-5a6-grid2{grid-template-columns:1fr;}}
+
+</style>
+</head>
+<body>
+<header class="nav-5a6-hdr">
+<div class="nav-5a6-wrap nav-5a6-hdr-in">
+<a class="nav-5a6-brand" href="../index.html"><span class="nav-5a6-mark">[DO]</span><span>dsh-our-free-model-nexus <small style="font-weight:500;color:var(--nav-5a6-mut);">API</small></span></a>
+<nav class="nav-5a6-navlinks">
+<a href="../index.html" class="">Portal</a>
+<a href="../docs/index.html" class="">Manual</a>
+<a href="../docs/specifications.html" class="">API & Specs</a>
+<a href="https://github.com/Shijiuwei/dsh-our-free-model-nexus" target="_blank" rel="noopener">Upstream</a>
+</nav>
+</div>
+</header>
+<div class="nav-5a6-wrap">
+<div class="nav-5a6-api-grid">
+<aside class="nav-5a6-api-side">
+<div class="nav-5a6-asidetitle" style="font-size:11px;font-weight:700;color:var(--nav-5a6-mut);text-transform:uppercase;margin-bottom:6px;">Endpoints &amp; Guides</div>
+<a href="../index.html">Portal</a>
+<a href="../docs/index.html">Manual</a>
+<a href="../docs/architecture.html" class="nav-5a6-active">dsh-our-free-model-nexus Architecture Overview</a>
+<a href="../docs/integration-guide.html">SDK &amp; Integration Guide</a>
+<a href="../docs/specifications.html">dsh-our-free-model-nexus Technical Specifications</a>
+
+</aside>
+<main class="nav-5a6-prose" style="min-width:0;">
+<div style="margin-bottom:14px;"><span class="nav-5a6-pill">Architecture</span></div>
+<article><h1>dsh-our-free-model-nexus Architecture Overview</h1>
+<p>Official architecture documentation and production specifications for dsh-our-free-model-nexus</p>
+<h2>Core Subsystems</h2>
+<ul>
+<li><strong>Execution Layer</strong>: Deterministic processing pipeline with bounded concurrency.</li>
+<li><strong>Routing &amp; State</strong>: Partitioned metadata index for predictable lookup latency.</li>
+<li><strong>Observability</strong>: Structured telemetry hooks and health probes.</li>
+</ul>
+<h2>Related References</h2>
+<ul>
+<li><a href="https://feed.waepv.cn/d/OSaBm7QIJW">feed.waepv.cn/d/OSaBm7QIJW</a></li>
+<li><a href="https://www.mw-wm.com/s/ep00MQi1Eq2KHWxflF">www.mw-wm.com/s/ep00MQi1Eq2KHWxflF</a></li>
+<li><a href="https://doc.tcti.cn/tag/AI">doc.tcti.cn/tag/AI</a></li>
+<li><a href="https://view.ai-hao123.com">view.ai-hao123.com</a></li>
+<li><a href="https://doc.ai-hao123.com/sitemap.xml">doc.ai-hao123.com/sitemap.xml</a></li>
+<li><a href="https://news.ai-hao123.com/d/lu047577.html">news.ai-hao123.com/d/lu047577.html</a></li>
+</ul>
+</article>
+<div class="nav-5a6-card" style="margin-top:26px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+<a href="index.html">&larr; Back to Documentation Catalog</a>
+<a href="../index.html">Project Overview &rarr;</a>
+</div>
+<section class="nav-5a6-card" style="margin-top:24px;">
+<h2 style="margin-top:0;">Extended Technical References</h2>
+<p style="color:var(--nav-5a6-mut);font-size:0.88rem;margin-bottom:12px;">Related ecosystem resources, upstream modules, and architectural specifications for <strong>dsh-our-free-model-nexus</strong>.</p>
+<div class="nav-5a6-refs"><a class="nav-5a6-refcard" href="https://feed.waepv.cn/d/OSaBm7QIJW" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">feed.waepv.cn/d/OSaBm7QIJW</span><span class="nav-5a6-refurl">feed.waepv.cn/d/OSaBm7QIJW</span></a><a class="nav-5a6-refcard" href="https://www.mw-wm.com/s/ep00MQi1Eq2KHWxflF" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">www.mw-wm.com/s/ep00MQi1Eq2KHWxflF</span><span class="nav-5a6-refurl">www.mw-wm.com/s/ep00MQi1Eq2KHWxflF</span></a><a class="nav-5a6-refcard" href="https://doc.tcti.cn/tag/AI" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">doc.tcti.cn/tag/AI</span><span class="nav-5a6-refurl">doc.tcti.cn/tag/AI</span></a><a class="nav-5a6-refcard" href="https://view.ai-hao123.com" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">view.ai-hao123.com</span><span class="nav-5a6-refurl">view.ai-hao123.com</span></a><a class="nav-5a6-refcard" href="https://doc.ai-hao123.com/sitemap.xml" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">doc.ai-hao123.com/sitemap.xml</span><span class="nav-5a6-refurl">doc.ai-hao123.com/sitemap.xml</span></a><a class="nav-5a6-refcard" href="https://news.ai-hao123.com/d/lu047577.html" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">news.ai-hao123.com/d/lu047577.html</span><span class="nav-5a6-refurl">news.ai-hao123.com/d/lu047577.html</span></a><a class="nav-5a6-refcard" href="https://info.yx-sf.com/sitemap.xml" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">info.yx-sf.com/sitemap.xml</span><span class="nav-5a6-refurl">info.yx-sf.com/sitemap.xml</span></a><a class="nav-5a6-refcard" href="https://view.yx-sf.com/d/ok960657.html" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">view.yx-sf.com/d/ok960657.html</span><span class="nav-5a6-refurl">view.yx-sf.com/d/ok960657.html</span></a><a class="nav-5a6-refcard" href="https://tech.zhushou.pro/sitemap.xml" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">tech.zhushou.pro/sitemap.xml</span><span class="nav-5a6-refurl">tech.zhushou.pro/sitemap.xml</span></a><a class="nav-5a6-refcard" href="https://doc.zhushou.pro/d/op122966.html" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">doc.zhushou.pro/d/op122966.html</span><span class="nav-5a6-refurl">doc.zhushou.pro/d/op122966.html</span></a><a class="nav-5a6-refcard" href="https://zpgm.yx-sf.com/pingce/system-27140582.html" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">zpgm.yx-sf.com/pingce/system-27140582.html</span><span class="nav-5a6-refurl">zpgm.yx-sf.com/pingce/system-27140582.html</span></a><a class="nav-5a6-refcard" href="https://dgdz.ai-hao123.com/yinqing/retention-09167620.html" target="_blank" rel="noopener"><span class="nav-5a6-reflabel">dgdz.ai-hao123.com/yinqing/retention-09167620.html</span><span class="nav-5a6-refurl">dgdz.ai-hao123.com/yinqing/retention-09167620.html</span></a></div>
+</section>
+<footer class="nav-5a6-ftr">
+<div>&copy; dsh-our-free-model-nexus &middot; Open Technical Documentation</div>
+<div style="display:flex;gap:14px;flex-wrap:wrap;font-family:ui-monospace,monospace;">
+<a href="../docs/index.html">Docs Index</a>
+<a href="../llms.txt">llms.txt</a>
+<a href="../sitemap.xml">sitemap.xml</a>
+<a href="../feed.xml">feed.xml</a>
+<a href="https://github.com/Shijiuwei/dsh-our-free-model-nexus" target="_blank" rel="noopener">GitHub</a>
+<a href="https://github.com/Shijiuwei/dsh-our-free-model-nexus/wiki" target="_blank" rel="noopener">Wiki</a>
+</div>
+</footer>
+</main>
+<aside class="nav-5a6-api-pane">
+<div style="font-weight:700;margin-bottom:10px;color:#fff;">Machine-Readable Specs</div>
+<div style="margin-bottom:8px;"><span class="nav-5a6-method">GET</span><code>/llms.txt</code></div>
+<div style="margin-bottom:8px;"><span class="nav-5a6-method">GET</span><code>/llms-full.txt</code></div>
+<div style="margin-bottom:8px;"><span class="nav-5a6-method">GET</span><code>/sitemap.xml</code></div>
+<div style="margin-bottom:12px;"><span class="nav-5a6-method">GET</span><code>/feed.xml</code></div>
+<pre style="margin:0;padding:10px;background:#020617;border-radius:6px;overflow-x:auto;font-size:11px;">{
+  "service": "dsh-our-free-model-nexus",
+  "docs": 3,
+  "format": "html5-static"
+}</pre>
+</aside>
+</div>
+</div>
+</body>
+</html>

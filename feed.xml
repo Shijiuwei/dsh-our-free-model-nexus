@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>dsh-our-free-model-nexus</title>
+  <subtitle>Official architecture documentation and production specifications for dsh-our-free-model-nexus</subtitle>
+  <link href="https://Shijiuwei.github.io/dsh-our-free-model-nexus/feed.xml" rel="self"/>
+  <id>https://Shijiuwei.github.io/dsh-our-free-model-nexus/</id>
+  <updated>2026-11-16T20:20:32.178000100+00:00</updated>
+  <entry>
+    <title>dsh-our-free-model-nexus Architecture Overview</title>
+    <link href="https://Shijiuwei.github.io/dsh-our-free-model-nexus/docs/architecture.html"/>
+    <id>https://Shijiuwei.github.io/dsh-our-free-model-nexus/docs/architecture.html</id>
+    <updated>2026-11-16T20:20:32.178000100+00:00</updated>
+    <summary>Official architecture documentation and production specifications for dsh-our-free-model-nexus</summary>
+  </entry>
+  <entry>
+    <title>SDK &amp; Integration Guide</title>
+    <link href="https://Shijiuwei.github.io/dsh-our-free-model-nexus/docs/integration-guide.html"/>
+    <id>https://Shijiuwei.github.io/dsh-our-free-model-nexus/docs/integration-guide.html</id>
+    <updated>2026-11-16T20:20:32.178000100+00:00</updated>
+    <summary>Practical integration guide for configuring dsh-our-free-model-nexus across local and distributed environments.</summary>
+  </entry>
+  <entry>
+    <title>dsh-our-free-model-nexus Technical Specifications</title>
+    <link href="https://Shijiuwei.github.io/dsh-our-free-model-nexus/docs/specifications.html"/>
+    <id>https://Shijiuwei.github.io/dsh-our-free-model-nexus/docs/specifications.html</id>
+    <updated>2026-11-16T20:20:32.178000100+00:00</updated>
+    <summary>Operational contracts, configuration defaults, and interface guarantees for dsh-our-free-model-nexus.</summary>
+  </entry>
+</feed>
